@@ -25,6 +25,7 @@ workflows:
           set -ex
           cd build/macos/Build/Products/Release
           APP_NAME=$(find . -name "*.app")
+
           ditto -c -k --keepParent "$APP_NAME" "application.zip"
           REQUEST_UUID=$(
             xcrun altool --notarize-app -t osx -f application.zip --primary-bundle-id io.codemagic.macosDesktop -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD --output-format json | \
@@ -34,10 +35,12 @@ workflows:
             sleep 120
             REQUEST_STATUS=$(xcrun altool --notarization-info $REQUEST_UUID -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD --output-format json | jq '."notarization-info".Status' | xargs)
           done
-          ditto -xk application.zip . && rm -rf application.zip
+
           if [ "$REQUEST_STATUS" == "success" ]; then
+            ditto -xk application.zip . && rm -rf application.zip
             xcrun stapler staple "$APP_NAME"
             spctl -a -vvvv "$APP_NAME"
+            ditto -c -k --keepParent "$APP_NAME" "application.zip"
           fi
     artifacts:
-      - build/macos/Build/Products/Release/*.app
+      - build/macos/Build/Products/Release/*.zip
