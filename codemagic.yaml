@@ -61,6 +61,9 @@ workflows:
       - name: Signing
         script: |
           set -x
+
+          pip install git+https://github.com/codemagic-ci-cd/cli-tools.git@improvements/macos_signing
+
           keychain initialize
           app-store-connect fetch-signing-files "io.codemagic.macosDesktop" --platform MAC_OS --type MAC_APP_STORE  # since the profile is required, we can fetch the certificate as well
           app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save                              # will save the matched to private key certificate
@@ -74,11 +77,14 @@ workflows:
         script: |
           set -x
           cd build/macos/Build/Products/Release
+          APP_NAME=$(find . -name "*.app")
+          PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
+
           # Mac App Store only accepts installer certificate signed app packages
-          xcrun productbuild --component macos_desktop.app /Applications/ unsigned.pkg
-          INSTALLER_CERT_NAME=$(keychain list-certificates | jq '.[] | select(.common_name | contains("Mac Developer Installer")) | .common_name')
-          xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg macos_desktop.pkg
-          xcrun altool --validate-app --file macos_desktop.pkg --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
-          xcrun altool --upload-app --file macos_desktop.pkg --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
+          xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg
+          INSTALLER_CERT_NAME=$(keychain list-certificates | jq '.[] | select(.common_name | contains("Mac Developer Installer")) | .common_name' | xargs)
+          xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME"
+          xcrun altool --validate-app --file "$PACKAGE_NAME" --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
+          xcrun altool --upload-app --file "$PACKAGE_NAME" --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
     artifacts:
       - build/macos/Build/Products/Release
