@@ -41,3 +41,44 @@ workflows:
           fi
     artifacts:
       - build/macos/Build/Products/Release/*.app
+  app_store_publishing_with_cli_fetched_signing_use_profiles:
+    name: App Store publishing with cli fetched signing use profiles
+    instance_type: mac_pro
+    environment:
+      vars:
+        # Private key needed to install a created without Codemagic certificate
+        CERTIFICATE_PRIVATE_KEY: Encrypted(Z0FBQUFBQmdic0xnTlg2TFJBR0hIUEdaNVRBbHVISVMyVzViTE5NMnMtcmNVcURTVzlRc1RzdXJIWUdpczV2Mm9wdHpDMHVsdHl0S3dlMjg4ZkxiVHp3VG94TjRnRjZEVmhsUzU2MFc1TE0yUWR3djZ3c0pNTkhHeVZZcnEyR0NaUTNNUXNFejJSdGgwdDdQS1RxNkpleHdmc3gyMXRucFpDT19PQThXWWMxaXBISjdNdXd4by0wVVdRZkdwQWhpTkRxVFE1ck9ES1ZERTg4aW9KUWd6SGdRWjhvNmZNUHFJWnJxOWx5ME9jTVFoNlk1OVZFWHM1cmN3WGNwY0pKaFotRFhMT3lpU1VMUzE0T0E5eXlmZ2t6RnYxbjI4MXhlMEZPOEU2OEhSckFPaHdCazFRaWJnc2RVV00tUlFtV2Zwd0ZIUXRISzZIVVg0TGFJSDFMMnBGTV91WEhBQXJTYk1xVFFwTnI5dno5YUVJSHl5SVNKSE9fQUNIUTJhNGpiZkY5emxXNTJRdWp3ckQ0akgxTF9WbHNnX1NONDBIV3J0T3Zma0YtWENFZ1poUEJMdGJBRm9hOVU1OWV5eHlsZ3JHSjBJYU1YZmVKYXFkb1RaNGFFUjNjUkc2MlFrVFFyQl9jZXRwUDNsYWloZDdiZmtzd0pZU1VtaXZxSHZCNkl3SURtWFhGYUxIbW95NUx5c2xmY1d5dEllLU90V2ZZX2FVVDZ4azU0ZlR0ZTdfTkVpc21SX2VnRXBlTDktYUtBRGVVc1REdXhadk9sd3ZTdnhjeUNoSGU2V3h4S21nUjB2bFpyZWpMSWlRM1BOOEl1VGV5cW0zb2xFTzJCRGNId1ctSzc1dGwxelNFU3B5THNHYkRFdHVvLUJUNW5RVnVMVmZVVHJUU2FMSmN4OHBkeHE1WG1PR2tGUnowU0VqVE84T0hnXzBJVWJNLVppXzJqSTN0SFdrallTa01LTHM1X29iNE9JUmhNN2NkUmRlUXd0X25HYWw5RXl0cmIxM1pTTlZaTWhEazJlSkRHakpNaVFWMzE4NHR1a01IZnlGLTFUUS1qVG0zYzZKV1VRQ0FmQko4a1Y1ajBURmJMZTBzd2F0QkhybFlEUkpUNWhYN0lYR3QweHUyTXFjYW5GX01yZE9zTjJCWnFxaGpBc09QUlhxemFOTVY2U21VcURtdXVFZGVsUFcwT1I1QzFySmFnZDlTSzZOb2hTVUN1Qk9fUlhYYzFHQUxILUhzNVMyY1VHZGhka2F5M2JqdzlocWkzcUgzN2l4Nnp3Wmx5SDF3TXpZRnVMVXRzeUEyOEtuN1dfaE9MS3Z3WDY0MUt3d0pUY01PbERPNUpWV1dJT21oM2dMUWhVLWpNVEd5SmY2NlQ1Yl9TWnNBYjU1RU0xb0tIUnVaVmU4RDBLdmFxVU9sY2NQTVRFdTFQeUtZd1Nia2h5LXM4anhqMHp1YjMyVU9CYXlzTDMyQVc3QlVwU1ZYdU1WSzBjb3BGQkEwM1Z1TkMzZkRiUnBhcXNLczZ3d0tmSks5YmdPTmp2clljNXdxQ3pZQlg5d2EyTWd2M0p4R2xoa3prc1FKZFZBVUx2U2pwSm9nU2tKSFE4ckVVem1lYlpVZ0FJZ2w4ZVU1MXptREpveFFxeFF2MHhPRkVWSlB4Rml5MjUweVFtM2dSakFoWVFJSWpsUEROSFZoQWhodHgxT3V4SDVQSDRBamFmMldlaVZNaVNxV01VSUFUWlJ0b3RwYndfcVpCbmx2QjRfS2loSWowOGNHRFVrS1ZVM2ZtYUJ3cVNKdUhmRktBcGhOcHZfLTIwenNTT0lxRDJqenNCMks1NVk2TUhQTDdOeHB1RlpsMEFkMXREVzh5M09pQ1U0eUJXMC1NZjBpRDNibWtvYnpRTzhlcTYtX1BhYW9LRE1IaV9kOV8yVGhheVBNTjRZcmR2SHR2UWJLelhwaWZvbTNfeEYtbkxJTUhPZkxsdm5UbEdpRVRGQ1MxN2YwZDZzZ3VnTm5vLWprbHBEOF9fSEx3Sm9jamJfRDF5akdDN3lUSFo3NXdSVDFkX0djMnZpSVBUSnJYQ0hmcGRYQnBydUlCeFQza1BvVXhtVnc1SGNuYWVXbVkxdGViVGJrdldLMDR0Mld1Mm1JWmVzRTFPOVlBanB4d2pkWTh0cTJGc0lVQ05hT3dSSEU4akpkUG12MWJCYWhyU0tIeUFxclhWVTd1RF8xSURjcTYyakhtRkx6Y2pqOTNKWlNBdlo1azltaWN6TVZVM2taZlcyTlNNM2Vvb1kzMzJqLWtnNnF3ZzVHMzhyR1JLdEV6UVB4VEg4Q3ptQXd5MVhOVVMxYmJqVm1za0xGWGNSQ1BNSmVsczQ3VlBiNDV0R2cxTjBGRHBLNEJnanRjT2dFOHczemV0aTctTG5IeXBVZldqSkdfNk56TXVua0swaGprZURwZm5Dem41anF3WklrWFRUSWV6RDk4SElMakJBOUMwNjJCSThoTk1ial85WlN1MDVOa0dNS1lpQmhuVlU3bmVUNmt0Qm9wamdLb1JrVm5PVlJmVVliR09QM004NHExTlZmTEkwa0RnRHQzM2ltcFNsWFFCYndSazNid1Ita04yQVZPZFA5Wi1yN01ZdlNFV21aMlYzYkxPMW9vQmxrSGNmZ0p2bkJKSlF6NnBVRTU5NDJKbDQ0Z24wUk90VTBubUx6Nzg3TnBZb2szYUNIRVl3UzRpc0lEVWNIX3ZGaUMxclBYbXROU1ZDSzlSdk1GZmx4UVRoSnZCU1BHWld0U2tyelI5Q2FJeUZIczFRdVB2SElZLXZvY1BtbXRJbVVDNGRIV3J4dVJ2b0dVN1E4UmhDdnV6N3RmcnZkMHVWYXppTEZMeFdrNThVanZtNXZ2YXVCOUlPWGd5cy01eHM2VWhCY09CYzhBSkFUbkpENVEyWWkxb1MzNUhUME9TNmcxaGdramdyeS1rX2M3cUdEajdPcDltMTY2YkRjWXdNNzEtQnJlS01qU1o0SDRPSzJETkE1dDYzemN0X2xlMGpsQzlzR1FQUE9OUHlUR1otWGd0OWFJekpZTy04cUNhTzBN)
+
+        # App Store Connect credentials required to use app-store-connect cli tool
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(Z0FBQUFBQmdic05WMlNkXzFkUWFySmJIOW9CdkprSVNGZ3JrUTVTcnpYUzZ0TTBVa2U0TzdMcndGNHFIOC1ZUFZFWldWTjJ2Q1NpTl82WjBCMU1nLXRxSTh1NTRSNkxwNmc9PQ==)
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(Z0FBQUFBQmdic05IWl9YWXdXQmxrRXc4ckViaWNrWWpnaEdHYmRCUWRDc1hWdmdHMWk2WjdWOHBRSlo1LWRBLUN4R3k5aU9QM1ZPdTVMVDNWc3JHVVJ0MTUxQTdBbHYyTnNId0tMY2VkZWZGY0paWEE0TlJCRGNUaU5GMkt6WW1OSHRoM3pTWmdUU0k=)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(Z0FBQUFBQmdic016b3VKc2NJRkxwTnloM3dNSFdVam4xTzRUY2F1R250d3kyTzJtendGa0I2Ti0wZ1RTb0JKb2QwdUhzQzdfcG9oblYxMDJaNmFTdDBsc2lPREtFSzQyZDFKOFc1VU9JakY2OFg2eWxkd0tBSjVaQlA3SU4tVkJ6Q1hKV3Q0SmYyY0QxOWhkS3g0RXU1UFlGUThGUnd6VEhOTUJKd1lRcS1rTmZrVWc2SU1WeTNHMGV1dUN4M1k0SFlfVVVfWXlwaW9yNmdFMldJdW1aSmdFa3ByaDBndWhTcERka1g3am9pVWNEaUd2N1duN2gtRDZYUEhNbmwwWmVuSVhja3dEWDJGOVFPeVRfWTlKN21iSUVpeGgtdWpWZGdYRDU5Q2xqR2M1YlU1TTVTZG9RN05paE5kd1NEc01KeUtPcTBFSS1OUjQ3cVQwY1E3QW10ZE12VkhPbFd1M1h6WS0zUEhEeU0teTRERFU2b2ZOeUN0YWRBdDVjczRmZUsyN2hMNXlqVDRZaWNGSnZEaUgweHJTTFR6b3EyemtQd0ttR3lpN1ZCREx5NmhjZDI2Sl9zQT0=)
+
+        # Required to upload an artifact with altool (issuer id and private key from signing credentials will also suffice)
+        APP_SPECIFIC_PASSWORD: Encrypted(Z0FBQUFBQmdiZkd2NVRjOHR2SHN6eWUzQldrTlNyTFFJeFdSQ0o3Z21vSmI5ZWM2cWFHTG9MakNLNEhuMm04NXJxUlFVS0NvRUtyblFON0xUWnJDM1RwZkFGMzZ3eVdpSXhsUURxb3gyYnl0N19odkRMSEM5Y1U9)
+        APPLE_ID: Encrypted(Z0FBQUFBQmdic04tQl9QbXVNbEU3VWI1NnE1V3ZuWDJuM2FfRng3Q0FpQS1yQi1qeERLZ2VOVEd4bllIYm5OLXZBV1lVbzZmUDBjOWUyMy0tc2hkcWF5STdXM1JkZGlNcDBiMXVTRWZoNnNKMDBHNDFXRDRNRmM9)
+    scripts:
+      - name: Signing
+        script: |
+          set -x
+          keychain initialize
+          app-store-connect fetch-signing-files "io.codemagic.macosDesktop" --platform MAC_OS --type MAC_APP_STORE  # since the profile is required, we can fetch the certificate as well
+          app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save                              # will save the matched to private key certificate
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Build
+        script: |
+          flutter config --enable-macos-desktop
+          flutter build macos --release --build-number=$BUILD_NUMBER
+      - name: Publish
+        script: |
+          set -x
+          cd build/macos/Build/Products/Release
+          # Mac App Store only accepts installer certificate signed app packages
+          xcrun productbuild --component macos_desktop.app /Applications/ unsigned.pkg
+          INSTALLER_CERT_NAME=$(keychain list-certificates | jq '.[] | select(.common_name | contains("Mac Developer Installer")) | .common_name')
+          xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg macos_desktop.pkg
+          xcrun altool --validate-app --file macos_desktop.pkg --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
+          xcrun altool --upload-app --file macos_desktop.pkg --type osx -u $APPLE_ID -p $APP_SPECIFIC_PASSWORD
+    artifacts:
+      - build/macos/Build/Products/Release
